@@ -1,8 +1,17 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-from config import get_api_key
+########################################################################################################################
+#
+# This project is developed by OSS Cameroon under the mentorship of Ehlmn Boris.
+# Authors: Andrew Tatah, Elroy Kanye
+# Date: 11/03/2022
+# Version: 1.0
+# Name: OSS CAMEROON GAME BOT
+# Description: This is the main file of the project.
+#              This application acts as the driver for the telegram bot used for OSS Cameroon games.
+#              It communicates with the Telegram servers to perform games, quizzes and challenges in the designated
+#              group.
+#
+########################################################################################################################
+from bot import handler
 
 
 def print_hi(name):
@@ -12,7 +21,13 @@ def print_hi(name):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-    print(get_api_key("TELEGRAM"))
+    print_hi('OSSCAMEROON')
+    print("Running...")
+    handler()
+    print("Stopped!")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+########################################################################################################################
+#
+# END OF FILE
+#
+########################################################################################################################
