@@ -7,7 +7,7 @@ from config import BOT_API_KEY
 
 # function to handle the /start command
 def start(update, context):
-    update.message.reply_text('Hi! Start command received')
+    update.message.reply_text('Hi! Start command received\n/Start: START BOT bot\n/help: For HELP\n/update: UPDATE')
 
 
 # function to handle the /help command
