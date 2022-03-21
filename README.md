@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/andrew21-mch/tg-gamebot">
-    <img src="image/testImage.png" alt="Logo" width="80" height="80">
+    <img src="image/testImage.png" alt="Logo" width="70%" height="60%">
   </a>
 
 <h3 align="center">project_title</h3>
