@@ -114,10 +114,10 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+* Python
+* Pip3
+* python-telegram-bot
+
 
 ### Installation
 
@@ -125,11 +125,23 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    git clone https://github.com/github_username/repo_name.git
    ```
-2. Install python-telegram bot
+2. * Python
+  ```
+  sudo apt-get install python3
+  ```
+3. * Pip3
+  ```
+    sudo apt install python3-pip
+  ```
+4.  python-telegram-bot
+  ```
+  pip install python-telegram-bot
+  ```
+5. Install python-telegram bot
    ```sh
    pip3 install python-telegram-bot
    ```
-4. Enter your API in `config.py`
+6. . Enter your API in `config.py`
    ```js
    const API_KEY = 'ENTER YOUR API';
    ```
