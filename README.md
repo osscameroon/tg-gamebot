@@ -114,7 +114,7 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* Python
+* Python3
 * Pip3
 * python-telegram-bot
 
@@ -125,15 +125,15 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    git clone https://github.com/github_username/repo_name.git
    ```
-2. * Python
+2. Install Python3
   ```
   sudo apt-get install python3
   ```
-3. * Pip3
+3. Install Pip3
   ```
     sudo apt install python3-pip
   ```
-4.  python-telegram-bot
+4. Install python-telegram-bot
   ```
   pip install python-telegram-bot
   ```
@@ -141,7 +141,7 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    pip3 install python-telegram-bot
    ```
-6. . Enter your API in `config.py`
+6. Enter your API in `config.py`
    ```js
    const API_KEY = 'ENTER YOUR API';
    ```
@@ -153,12 +153,11 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Testing
 
-run with 
+- run with 
 ```
 python3 main.py
 ```
-
-_For more examples, please refer to the [Documentation](https://pyt.com)_
+- open telegram and try it out
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -167,12 +166,12 @@ _For more examples, please refer to the [Documentation](https://pyt.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [] Feature 1
-- [] Feature 2
-- [] Feature 3
+- [] question marker
+- [] publish  Quiz
+- [] Leaderboard
     - [] Nested Feature
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/osscameroon/tg-gamebot/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -210,7 +209,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/osscameroon/tg-gamebot](https://github.com/osscameroon/tg-gamebot)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
