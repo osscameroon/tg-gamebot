@@ -12,7 +12,7 @@ def get_api_key(k):
     try:  # Try to get the API KEY from GitHub secrets
         api_key = os.environ["TELEGRAM_BOT_API_KEY"]
     except KeyError:  # If not found, rely on the local storage
-        with open("../secrets/API.csv", mode='r') as file:
+        with open("/home/andy/.secretes/API.csv", mode='r') as file:
             for line in csv.reader(file):
                 if k == line[0]:
                     api_key = line[1]

@@ -1,4 +1,5 @@
 import logging
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
@@ -7,7 +8,33 @@ from config import BOT_API_KEY
 
 # function to handle the /start command
 def start(update, context):
-    update.message.reply_text('Hi! Start command received')
+    keyboard = [[InlineKeyboardButton("/Start"),
+            InlineKeyboardButton("/Help"),
+            InlineKeyboardButton("/Game"),
+            ],
+
+            [InlineKeyboardButton("/Whoami"),
+            InlineKeyboardButton("/update"),
+            InlineKeyboardButton("/sys"),
+            ]]
+
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    update.message.reply_text('Please choose:', reply_markup=reply_markup)
+
+    # update.message.reply_text("Hi")
+    # help = {
+    #     "Start" : "Start Bot",
+    #     "Help" : "Get Help",
+    #     "update" : "Get Update",
+    #     "game" : "Play Game",
+    #     "whoami" : "Get you username",
+    #     "sys" : "get your system",
+        
+    # }
+    # reply = ""
+    # for key, value in help.items():
+    #     reply = reply + "/{key} : value"
+    # update.message.reply_text(reply)
 
 
 # function to handle the /help command
