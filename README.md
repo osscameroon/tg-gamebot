@@ -20,17 +20,18 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 [![Contributors][contributors-shield]][https://github.com/osscameroon/tg-gamebot/graphs/contributors]
-[![Forks][forks-shield]][fhttps://github.com/osscameroon/tg-gamebot/network/members]
-[![Stargazers][stars-shield]][https://github.com/osscameroon/tg-gamebot/stargazers]
-[![Issues][issues-shield]][https://github.com/osscameroon/tg-gamebot/issues]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/osscameroon/tg-gamebot_name">
+  <a href="https://github.com/github_username/repo_name">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -39,14 +40,14 @@
   <p align="center">
     project_description
     <br />
-    <a href="https://github.com/osscameroon/tg-gamebot"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/osscameroon/tg-gamebot">View Demo</a>
+    <a href="https://github.com/github_username/repo_name">View Demo</a>
     ·
-    <a href="https://github.com/osscameroon/tg-gamebotissues">Report Bug</a>
+    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
     ·
-    <a href="https://github.com/osscameroon/tg-gamebotissues">Request Feature</a>
+    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
   </p>
 </div>
 
