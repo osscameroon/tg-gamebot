@@ -30,8 +30,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/osscameroon/tg-gamebot">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/andrew21-mch/tg-gamebot">
+    <img src="image/testImage.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">project_title</h3>
