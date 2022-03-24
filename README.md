@@ -2,12 +2,13 @@
 
 <div id="top"></div>
 
+<!--
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-
+-->
 
 
 <!-- PROJECT LOGO -->
@@ -20,7 +21,6 @@
 <h3 align="center">OSSCAMEROON QUIZ BOT</h3>
 
   <p align="center">
-    project_description
     <br />
     <a href="https://github.com/osscameroon/tg-gamebot"><strong>Explore the docs »</strong></a>
     <br />
@@ -79,7 +79,8 @@ This bot will be seperate on modules...
 
 ### Built With
 
-* [Python.py](https://python.org/)
+* [Python](https://python.org/)
+* [Python Telegram Bot](https://github.com/python-telegram-bot)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -102,28 +103,28 @@ This is an example of how to list things you need to use the software and how to
 ### Installation
 
 1. Clone the repo
-   ```sh
-   git clone https://github.com/osscameroon/tg-gamebot.git
-   ```
+    ```shell
+    git clone https://github.com/osscameroon/tg-gamebot.git
+    ```
 2. Install Python3
-  ```
-  sudo apt-get install python3
-  ```
+    ```shell
+    sudo apt-get install python3
+    ```
 3. Install Pip3
-  ```
+    ```shell
     sudo apt install python3-pip
-  ```
+    ```
 4. Install python-telegram-bot
-  ```
-  pip install python-telegram-bot
-  ```
+    ```shell
+    pip install python-telegram-bot
+    ```
 5. Install python-telegram bot
-   ```sh
-   pip3 install python-telegram-bot
-   ```
+    ```shell
+    pip3 install python-telegram-bot
+    ```
 6. Enter your API in `config.py`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+   ```python
+   API_KEY = 'ENTER YOUR API';
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -166,9 +167,9 @@ If you have a suggestion that would make this better, please fork the repo and c
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+2. Create your Feature Branch (`git checkout -b feature/amazing-new-feature`)
+3. Commit your Changes (`git commit -m 'Add some amazing-new-feature'`)
+4. Push to the Branch (`git push origin feature/amazing-new-feature`)
 5. Open a Pull Request
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -186,8 +187,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- CONTACT -->
 ## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+* Andrew Tatah - [@nfondandrew73](https://twitter.com/nfondandrew73) - nfondandrew73@gmail.com
+* Elroy Kanye - [@elroykanye](https://twitter.com/elroykanye) - elroykanye@gmail.com
 
 Project Link: [https://github.com/osscameroon/tg-gamebot](https://github.com/osscameroon/tg-gamebot)
 
@@ -198,16 +199,15 @@ Project Link: [https://github.com/osscameroon/tg-gamebot](https://github.com/oss
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* [Python Telegram Bot](https://github.com/python-telegram-bot)
+* [OSS Cameroon](https://github.com/osscameroon)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links
 [contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
 [contributors-url]: https://github.com/osscameroon/tg-gamebot/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
@@ -219,3 +219,4 @@ Project Link: [https://github.com/osscameroon/tg-gamebot](https://github.com/oss
 [license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
 [license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+ -->
