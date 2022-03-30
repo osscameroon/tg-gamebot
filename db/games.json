@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Quiz",
+    "description": "Quiz description",
+    "image": "quiz.png",
+    "url": "quiz",
+    "type": "quiz"
+  }
+]
