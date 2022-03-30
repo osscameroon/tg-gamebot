@@ -6,7 +6,7 @@
 # Version: 1.0
 # Name: OSS CAMEROON GAME BOT
 # Description: This is the main file of the project.
-#              This application acts as the models for the telegram bot used for OSS Cameroon games.
+#              This application acts as the data for the telegram bot used for OSS Cameroon games.
 #              It communicates with the Telegram servers to perform games, quizzes and challenges in the designated
 #              group.
 #
