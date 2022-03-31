@@ -18,12 +18,15 @@ def start(update: Update, context: CallbackContext):
 # function to handle the /help command
 def help(update: Update, context: CallbackContext):
     commands = {
+        'about': 'Displays information about the bot',
         'help': 'displays help comands',
+        'games': 'displays a list of available games',
+        'leaderboard': 'displays the leaderboard',
+        'stop': 'stops game',
         'start': 'Start a game',
         'schedule' : 'schedules games',
         'pause': 'pauses ongoing game',
-        
-
+        'resume': 'resumes paused game',
     }
     reply = 'The following commands are available:\n'
     for option in commands:
