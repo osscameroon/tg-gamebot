@@ -61,12 +61,8 @@ def handler():
 
     dispatcher.add_handler(CommandHandler("start", start))
     dispatcher.add_handler(CommandHandler("help", help))
-    dispatcher.add_handler(CommandHandler("play_game", play_game))
-    dispatcher.add_handler(CommandHandler("whoami", whoami))
     dispatcher.add_handler(CommandHandler("poll", poll))
-
     dispatcher.add_handler(MessageHandler(Filters.text, text))
-
     dispatcher.add_error_handler(error)
 
     # run til infinity
