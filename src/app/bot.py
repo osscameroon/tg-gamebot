@@ -1,14 +1,18 @@
 import logging
 
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram.ext import \
+    Updater, \
+    CommandHandler, \
+    MessageHandler, \
+    Filters, \
+    CallbackContext
 from telegram.update import Update
-from config import BOT_API_KEY
+
+from src.app.config import BOT_API_KEY
 import platform
 
+
 # function to greet the user
-from data.quiz import test_poll
-
-
 def hello(update: Update, context: CallbackContext) -> None:
     update.message.reply_text('Hello {}'.format(update.message.from_user.first_name))
 
@@ -59,16 +63,7 @@ def error(update: Update, context: CallbackContext):
 
 def text(update: Update, context: CallbackContext):
     text_received = update.message.text
-    update
-
-
-###############################################################################
-# Test commands
-def poll(update, context):
-    update.message
-
-
-###############################################################################
+    update.message.reply_text(f'You said: {text_received}')
 
 
 def handler():
@@ -80,7 +75,6 @@ def handler():
     dispatcher.add_handler(CommandHandler("host", host))
     dispatcher.add_handler(CommandHandler("play_game", play_game))
     dispatcher.add_handler(CommandHandler("whoami", whoami))
-    dispatcher.add_handler(CommandHandler("poll", poll))
 
     dispatcher.add_handler(MessageHandler(Filters.text, text))
 
