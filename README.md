@@ -15,7 +15,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/andrew21-mch/tg-gamebot">
-    <img src="image/testImage.png" alt="Logo" width="70%" height="60%">
+    <img src="assets/testImage.png" alt="Logo" width="70%" height="60%">
   </a>
 
 <h3 align="center">OSSCAMEROON QUIZ BOT</h3>

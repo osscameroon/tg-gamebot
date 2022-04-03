@@ -5,9 +5,8 @@ from telegram.update import Update
 from config import BOT_API_KEY
 import platform
 
-
 # function to greet the user
-from models.quiz import test_poll
+from data.quiz import test_poll
 
 
 def hello(update: Update, context: CallbackContext) -> None:
@@ -66,7 +65,6 @@ def text(update: Update, context: CallbackContext):
 ###############################################################################
 # Test commands
 def poll(update, context):
-
     update.message
 
 
