@@ -76,16 +76,7 @@ def error(update: Update, context: CallbackContext):
 
 def text(update: Update, context: CallbackContext):
     text_received = update.message.text
-    update
-
-
-###############################################################################
-# Test commands
-def poll(update, context):
-    update.message
-
-
-###############################################################################
+    update.message.reply_text(f'You said: {text_received}')
 
 
 def handler():
