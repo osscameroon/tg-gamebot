@@ -9,45 +9,48 @@ import platform
 from data.quiz import test_poll
 
 
-def hello(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text('Hello {}'.format(update.message.from_user.first_name))
-
-
 # function to handle the /start command
 def start(update: Update, context: CallbackContext):
-    update.message.reply_text('Hi! This is a bot to greet you.\n'
-                              'Try sending me a message')
+    update.message.reply_text("Hi\nTo start a game, select game type.")
+def about(update: Update, context: CallbackContext):
+    update.message.reply_text(f'This is a bot for the {platform.system()} platform')
+#show available games
+def games(update, context):
+    update.message.reply_text("Games are not implemented yet")
+#Display leaderboard
+def leaderboard(update, context):
+    update.message.reply_text("Leaderboard is not implemented yet")
+#stop ongoing game
+def stop(update, context):
+    update.message.reply_text("Stopping game")
+    test_poll.stop()
+#schedule a game
+def schedule(update, context):
+    update.message.reply_text("Scheduling games")
+#pause game
+def pause(update, context):
+    test_poll.pause()
 
-
-# function to show the information of the computer running this bot
-def host(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text(f'Hostname: {platform.node()}\n'
-                              f'Platform: {platform.platform()}\n'
-                              f'System: {platform.system()}\n'
-                              f'Release: {platform.release()}\n'
-                              f'Version: {platform.version()}\n'
-                              f'Machine: {platform.machine()}')
-
-
-def play_game(update: Update, context: CallbackContext):
-    update.message.reply_text('Select the game you want to play:')
-
-
-def whoami(update: Update, context: CallbackContext):
-    update.message.reply_text(f'You are {update.message.from_user.username}')
-
+#resume game
+def resume(update, context):
+    test_poll.resume()
 
 # function to handle the /help command
 def help(update: Update, context: CallbackContext):
     commands = {
-        'start': 'Start the bot',
-        'help': 'Get help on how to use the bot',
-        'platform': 'Get the platform information of the bot',
-        'play_game': 'Play a game'
+        'about': 'Displays information about the bot',
+        'help': 'displays help comands',
+        'games': 'displays a list of available games',
+        'leaderboard': 'displays the leaderboard',
+        'stop': 'stops game',
+        'start': 'Start a game',
+        'schedule' : 'schedules games',
+        'pause': 'pauses ongoing game',
+        'resume': 'resumes paused game',
     }
     reply = 'The following commands are available:\n'
-    for command in commands:
-        reply += f'/{command} : {commands[command]}\n\n'
+    for option in commands:
+        reply += f'/{option} : {commands[option]}\n\n'
     update.message.reply_text(reply)
 
 
@@ -74,16 +77,17 @@ def poll(update, context):
 def handler():
     updater = Updater(BOT_API_KEY, use_context=True)
     dispatcher = updater.dispatcher
-
-    dispatcher.add_handler(CommandHandler("start", start))
-    dispatcher.add_handler(CommandHandler("help", help))
-    dispatcher.add_handler(CommandHandler("host", host))
-    dispatcher.add_handler(CommandHandler("play_game", play_game))
-    dispatcher.add_handler(CommandHandler("whoami", whoami))
-    dispatcher.add_handler(CommandHandler("poll", poll))
-
+    #create handlers for all functions above
+    dispatcher.add_handler(CommandHandler('start', start))
+    dispatcher.add_handler(CommandHandler('help', help))
+    dispatcher.add_handler(CommandHandler('about', about))
+    dispatcher.add_handler(CommandHandler('games', games))
+    dispatcher.add_handler(CommandHandler('leaderboard', leaderboard))
+    dispatcher.add_handler(CommandHandler('stop', stop))
+    dispatcher.add_handler(CommandHandler('schedule', schedule))
+    dispatcher.add_handler(CommandHandler('pause', pause))
+    dispatcher.add_handler(CommandHandler('resume', resume))
     dispatcher.add_handler(MessageHandler(Filters.text, text))
-
     dispatcher.add_error_handler(error)
 
     # run til infinity
