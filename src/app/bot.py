@@ -50,7 +50,7 @@ def resume(update, context):
 
 
 # function to handle the /help command
-def help(update: Update, context: CallbackContext):
+def help_cmd(update: Update, context: CallbackContext):
     commands = {
         'about': 'Displays information about the bot',
         'help': 'displays help comands',
@@ -93,7 +93,7 @@ def handler():
     dispatcher = updater.dispatcher
     # create handlers for all functions above
     dispatcher.add_handler(CommandHandler('start', start))
-    dispatcher.add_handler(CommandHandler('help', help))
+    dispatcher.add_handler(CommandHandler('help', help_cmd))
     dispatcher.add_handler(CommandHandler('about', about))
     dispatcher.add_handler(CommandHandler('games', games))
     dispatcher.add_handler(CommandHandler('leaderboard', leaderboard))
