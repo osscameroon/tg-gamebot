@@ -11,9 +11,29 @@ from models.quiz import test_poll
 
 # function to handle the /start command
 def start(update: Update, context: CallbackContext):
-    update.message.reply_text('Hi\n'
-                              'To start a game, select game type.')
+    update.message.reply_text("Hi\nTo start a game, select game type.")
+def about(update: Update, context: CallbackContext):
+    update.message.reply_text(f'This is a bot for the {platform.system()} platform')
+#show available games
+def games(update, context):
+    update.message.reply_text("Games are not implemented yet")
+#Display leaderboard
+def leaderboard(update, context):
+    update.message.reply_text("Leaderboard is not implemented yet")
+#stop ongoing game
+def stop(update, context):
+    update.message.reply_text("Stopping game")
+    test_poll.stop()
+#schedule a game
+def schedule(update, context):
+    update.message.reply_text("Scheduling games")
+#pause game
+def pause(update, context):
+    test_poll.pause()
 
+#resume game
+def resume(update, context):
+    test_poll.resume()
 
 # function to handle the /help command
 def help(update: Update, context: CallbackContext):
@@ -58,10 +78,16 @@ def poll(update, context):
 def handler():
     updater = Updater(BOT_API_KEY, use_context=True)
     dispatcher = updater.dispatcher
-
-    dispatcher.add_handler(CommandHandler("start", start))
-    dispatcher.add_handler(CommandHandler("help", help))
-    dispatcher.add_handler(CommandHandler("poll", poll))
+    #create handlers for all functions above
+    dispatcher.add_handler(CommandHandler('start', start))
+    dispatcher.add_handler(CommandHandler('help', help))
+    dispatcher.add_handler(CommandHandler('about', about))
+    dispatcher.add_handler(CommandHandler('games', games))
+    dispatcher.add_handler(CommandHandler('leaderboard', leaderboard))
+    dispatcher.add_handler(CommandHandler('stop', stop))
+    dispatcher.add_handler(CommandHandler('schedule', schedule))
+    dispatcher.add_handler(CommandHandler('pause', pause))
+    dispatcher.add_handler(CommandHandler('resume', resume))
     dispatcher.add_handler(MessageHandler(Filters.text, text))
     dispatcher.add_error_handler(error)
 
