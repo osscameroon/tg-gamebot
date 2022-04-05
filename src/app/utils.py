@@ -1,9 +1,7 @@
 import csv
 import os
 
-andrew = "/home/andy/.secretes/API.csv"
-vince = "../secrets/API.csv"
-
+key_dir = "./.secrets/API.csv"
 
 def get_api_key():
     """
@@ -14,10 +12,9 @@ def get_api_key():
     try:  # Try to get the API KEY from GitHub secrets
         api_key = os.environ["TELEGRAM_BOT_API_KEY"]
     except KeyError:  # If not found, rely on the local storage
-        if os.path.isfile(andrew):
-            api_key = read_api(andrew)
-        elif os.path.isfile(vince):
-            api_key = read_api(vince)
+        print(os.path.isfile(key_dir))
+        if os.path.isfile(key_dir):
+            api_key = read_api(key_dir)
         else:
             print("No API key found.")
             exit(1)  # Exit if no API key is found
