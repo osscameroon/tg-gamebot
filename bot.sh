@@ -22,55 +22,60 @@
 ############################################################
 
 COMMAND="$1"
+APP_DIR="./src/app"
 
 ############################################################
 #       DEFINE FUNCTIONS HERE
 ############################################################
 
 function help() {
-    echo "Usage: $0 [--help] [--version] [install] [uninstall] [update] [test] [clean]"
-    echo "  --help: Display this help message"
-    echo "  --version: Display the version of this script"
-    echo "  --install: Install the bot dependencies"
-    echo "  --uninstall: Uninstall the bot dependencies"
-    echo "  --update: Update the bot dependencies"
-    echo "  --test: Run tests"
-    echo "  --clean: Clean the bot"
-    echo "  --lint: Check code style"
+  echo "Usage: $0 [--help] [--version] [install] [uninstall] [update] [test] [clean]"
+  echo "  --help: Display this help message"
+  echo "  --version: Display the version of this script"
+  echo "  --install: Install the bot dependencies"
+  echo "  --uninstall: Uninstall the bot dependencies"
+  echo "  --update: Update the bot dependencies"
+  echo "  --test: Run tests"
+  echo "  --clean: Clean the bot"
+  echo "  --lint: Check code style"
 }
 
 function test() {
-    echo "Running tests..."
-    pytest
+  echo "Running tests..."
+  pytest
 }
 
 function lint() {
-    echo "Checking code style..."
-    flake8 .
+  echo "Checking code style..."
+  flake8 .
 }
 
 function version() {
-    echo "Version: $VERSION"
+  echo "Version: $VERSION"
 }
 
 function install() {
-    echo "Installing..."
-    pip install -r requirements.txt
+  echo "Installing..."
+  pip install -r requirements.txt
 }
 
 function uninstall() {
-    echo "Uninstalling..."
-    pip uninstall -r requirements.txt
+  echo "Uninstalling..."
+  pip uninstall -r requirements.txt
+}
+
+function launch() {
+  python3 "$APP_DIR/main.py"
 }
 
 function update() {
-    echo "Updating..."
-    pip install -r requirements.txt --upgrade
+  echo "Updating..."
+  pip install -r requirements.txt --upgrade
 }
 
 function clean() {
-    echo "Cleaning..."
-    rm -rf .pytest_cache
+  echo "Cleaning..."
+  rm -rf .pytest_cache
 }
 
 ############################################################
@@ -79,45 +84,49 @@ function clean() {
 
 function main() {
   case "$1" in
-    "start")
-      start
-      ;;
-    "stop")
-      stop
-      ;;
-    "restart")
-      restart
-      ;;
-    "status")
-      status
-      ;;
-    "test")
-      test
-      ;;
-    "install")
-      install
-      ;;
-    "uninstall")
-      uninstall
-      ;;
-    "update")
-      update
-      ;;
-    "clean")
-      clean
-      ;;
-    "lint")
-      lint
-      ;;
-    "--version")
-      version
-      ;;
-    "--help")
-      help
-      ;;
-    *)
-      echo "Usage: $0 {start|stop|restart|status|help|install|uninstall|update|clean|lint}"
-      exit 1
+  "start")
+    start
+    ;;
+  "stop")
+    stop
+    ;;
+  "restart")
+    restart
+    ;;
+  "status")
+    status
+    ;;
+  "test")
+    test
+    ;;
+  "install")
+    install
+    ;;
+  "uninstall")
+    uninstall
+    ;;
+  "launch")
+    launch
+    ;;
+  "update")
+    update
+    ;;
+  "clean")
+    clean
+    ;;
+  "lint")
+    lint
+    ;;
+  "--version")
+    version
+    ;;
+  "--help")
+    help
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart|status|help|install|uninstall|update|clean|lint}"
+    exit 1
+    ;;
   esac
 }
 main "$COMMAND"
@@ -125,9 +134,3 @@ main "$COMMAND"
 ############################################################
 #       END OF SCRIPT
 ############################################################
-
-
-
-
-
-
