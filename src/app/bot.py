@@ -2,7 +2,7 @@ import logging
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 from telegram.update import Update
-from config import BOT_API_KEY
+from constants import BOT_API_KEY
 import platform
 
 # function to greet the user
@@ -12,31 +12,45 @@ from data.quiz import test_poll
 # function to handle the /start command
 def start(update: Update, context: CallbackContext):
     update.message.reply_text("Hi\nTo start a game, select game type.")
+
+
 def about(update: Update, context: CallbackContext):
     update.message.reply_text(f'This is a bot for the {platform.system()} platform')
-#show available games
+
+
+# show available games
 def games(update, context):
     update.message.reply_text("Games are not implemented yet")
-#Display leaderboard
+
+
+# Display leaderboard
 def leaderboard(update, context):
     update.message.reply_text("Leaderboard is not implemented yet")
-#stop ongoing game
+
+
+# stop ongoing game
 def stop(update, context):
     update.message.reply_text("Stopping game")
     test_poll.stop()
-#schedule a game
+
+
+# schedule a game
 def schedule(update, context):
     update.message.reply_text("Scheduling games")
-#pause game
+
+
+# pause game
 def pause(update, context):
     test_poll.pause()
 
-#resume game
+
+# resume game
 def resume(update, context):
     test_poll.resume()
 
+
 # function to handle the /help command
-def help(update: Update, context: CallbackContext):
+def help_cmd(update: Update, context: CallbackContext):
     commands = {
         'about': 'Displays information about the bot',
         'help': 'displays help comands',
@@ -44,7 +58,7 @@ def help(update: Update, context: CallbackContext):
         'leaderboard': 'displays the leaderboard',
         'stop': 'stops game',
         'start': 'Start a game',
-        'schedule' : 'schedules games',
+        'schedule': 'schedules games',
         'pause': 'pauses ongoing game',
         'resume': 'resumes paused game',
     }
@@ -62,24 +76,15 @@ def error(update: Update, context: CallbackContext):
 
 def text(update: Update, context: CallbackContext):
     text_received = update.message.text
-    update
-
-
-###############################################################################
-# Test commands
-def poll(update, context):
-    update.message
-
-
-###############################################################################
+    update.message.reply_text(f'You said: {text_received}')
 
 
 def handler():
     updater = Updater(BOT_API_KEY, use_context=True)
     dispatcher = updater.dispatcher
-    #create handlers for all functions above
+    # create handlers for all functions above
     dispatcher.add_handler(CommandHandler('start', start))
-    dispatcher.add_handler(CommandHandler('help', help))
+    dispatcher.add_handler(CommandHandler('help', help_cmd))
     dispatcher.add_handler(CommandHandler('about', about))
     dispatcher.add_handler(CommandHandler('games', games))
     dispatcher.add_handler(CommandHandler('leaderboard', leaderboard))
