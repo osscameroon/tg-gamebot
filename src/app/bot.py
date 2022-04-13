@@ -1,6 +1,8 @@
+import json
 import logging
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.update import Update
 from constants import BOT_API_KEY
 import platform
@@ -48,6 +50,24 @@ def pause(update, context):
 def resume(update, context):
     test_poll.resume()
 
+def menu(update, context):
+    buttons = [[InlineKeyboardButton(text='Start', callback_data="/start"),
+                InlineKeyboardButton(text='Stop', callback_data="/stop"),
+                InlineKeyboardButton(text='Pause', callback_data="/pause"),
+                InlineKeyboardButton(text='Resume', callback_data="/resume")],
+                [InlineKeyboardButton(text='About', callback_data="/about"),
+                InlineKeyboardButton(text='Help', callback_data="/help"),
+                InlineKeyboardButton(text='Games', callback_data="/games"),
+                InlineKeyboardButton(text='Leaderboard', callback_data="/leaderboard")]]
+    # create a keyboard
+    reply_markup = InlineKeyboardMarkup(buttons)
+    # send message with keyboard
+    update.message.reply_text('Please select an option:', reply_markup=reply_markup)
+
+    
+    
+
+
 
 # function to handle the /help command
 def help_cmd(update: Update, context: CallbackContext):
@@ -83,6 +103,7 @@ def handler():
     updater = Updater(BOT_API_KEY, use_context=True)
     dispatcher = updater.dispatcher
     # create handlers for all functions above
+    dispatcher.add_handler(CommandHandler('menu', menu))
     dispatcher.add_handler(CommandHandler('start', start))
     dispatcher.add_handler(CommandHandler('help', help_cmd))
     dispatcher.add_handler(CommandHandler('about', about))
@@ -94,7 +115,6 @@ def handler():
     dispatcher.add_handler(CommandHandler('resume', resume))
     dispatcher.add_handler(MessageHandler(Filters.text, text))
     dispatcher.add_error_handler(error)
-
     # run til infinity
     updater.start_polling()
 
