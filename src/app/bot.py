@@ -1,12 +1,11 @@
-import json
 import logging
-
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup
-from telegram.update import Update
-from constants import BOT_API_KEY
 import platform
 
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, KeyboardButton
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram.update import Update
+
+from constants import BOT_API_KEY
 # function to greet the user
 from data.quiz import test_poll
 
