@@ -14,6 +14,7 @@ from menus import main_menu_keyboard
 
 
 def oss_bot_start(update: Update, context: CallbackContext) -> None:
+    logging.info('Starting game')
     update.message.reply_text("Hi\nTo start a game, select game type.")
 
 
@@ -57,19 +58,8 @@ def oss_bot_menu(update: Update, context: CallbackContext) -> None:
     update.message.reply_text('Select Menu', reply_markup=reply_markup)
 
 
-def menu_actions(update: Update, context: CallbackContext) -> None:
-    print("menu_actions")
-    query = update.callback_query
-    query.answer()
-
-    query.edit_message_text(text='Start Menu', reply_markup=InlineKeyboardMarkup(
-        [[InlineKeyboardButton(text='BITCH', callback_data="/start")],
-         [InlineKeyboardButton(text='back', callback_data="main_menu")], ]
-    ))
-
-
 # function to handle the /help command
-def help_cmd(update: Update, context: CallbackContext):
+def oss_bot_help(update: Update, context: CallbackContext):
     commands = {
         'about': 'Displays information about the bot',
         'help': 'displays help comands',
@@ -88,26 +78,34 @@ def help_cmd(update: Update, context: CallbackContext):
 
 
 # function to handle errors occurred in dispatcher
-def error(update: Update, context: CallbackContext):
+def oss_bot_error(update: Update, context: CallbackContext):
     """Log Errors caused by Updates."""
     logging.warning('Update "%s" caused error "%s"', update, context.error)
 
 
-def text(update: Update, context: CallbackContext):
+def oss_bot_text(update: Update, context: CallbackContext):
     text_received = update.message.text
     update.message.reply_text(f'You said: {text_received}')
+
+
+def menu_actions(update: Update, context: CallbackContext) -> None:
+    print("menu_actions")
+    query = update.callback_query
+    query.answer()
+
+    query.edit_message_text(text='Start Menu', reply_markup=InlineKeyboardMarkup(
+        [[InlineKeyboardButton(text='BITCH', callback_data="/start")],
+         [InlineKeyboardButton(text='back', callback_data="main_menu")], ]
+    ))
 
 
 def handler():
     updater = Updater(BOT_API_KEY, use_context=True)
     dispatcher = updater.dispatcher
 
-    # send a message when the bot is run
-    updater.bot.send_message(chat_id=updater.bot.get_me().id, text="I'm online")
-
     # create handlers for all functions above
     dispatcher.add_handler(CommandHandler('start', oss_bot_start))
-    dispatcher.add_handler(CommandHandler('help', help_cmd))
+    dispatcher.add_handler(CommandHandler('help', oss_bot_help))
     dispatcher.add_handler(CommandHandler('about', oss_bot_about))
     dispatcher.add_handler(CommandHandler('games', oss_bot_games))
     dispatcher.add_handler(CommandHandler('leaderboard', oss_bot_leaderboard))
@@ -120,8 +118,9 @@ def handler():
     # callback query handlers
     dispatcher.add_handler(CallbackQueryHandler(menu_actions, pattern='menu1'))
 
-    dispatcher.add_handler(MessageHandler(Filters.text, text))
-    dispatcher.add_error_handler(error)
+    dispatcher.add_handler(MessageHandler(Filters.text, oss_bot_text))
+    dispatcher.add_error_handler(oss_bot_error)
+
     # run til infinity
     updater.start_polling()
 
