@@ -92,17 +92,20 @@ def handler():
     updater = Updater(BOT_API_KEY, use_context=True)
     dispatcher = updater.dispatcher
     # create handlers for all functions above
-    dispatcher.add_handler(CommandHandler('menu', menu))
-    dispatcher.add_handler(CommandHandler('start', start))
+    dispatcher.add_handler(CommandHandler('start', oss_bot_start))
     dispatcher.add_handler(CommandHandler('help', help_cmd))
-    dispatcher.add_handler(CommandHandler('about', about))
-    dispatcher.add_handler(CommandHandler('games', games))
-    dispatcher.add_handler(CommandHandler('leaderboard', leaderboard))
-    dispatcher.add_handler(CommandHandler('stop', stop))
-    dispatcher.add_handler(CommandHandler('schedule', schedule))
-    dispatcher.add_handler(CommandHandler('pause', pause))
-    dispatcher.add_handler(CommandHandler('resume', resume))
-    dispatcher.add_handler(CommandHandler('send_keyboard', send_keyboard))
+    dispatcher.add_handler(CommandHandler('about', oss_bot_about))
+    dispatcher.add_handler(CommandHandler('games', oss_bot_games))
+    dispatcher.add_handler(CommandHandler('leaderboard', oss_bot_leaderboard))
+    dispatcher.add_handler(CommandHandler('stop', oss_bot_stop))
+    dispatcher.add_handler(CommandHandler('schedule', oss_bot_schedule))
+    dispatcher.add_handler(CommandHandler('pause', oss_bot_pause))
+    dispatcher.add_handler(CommandHandler('resume', oss_bot_resume))
+    dispatcher.add_handler(CommandHandler('menu', oss_bot_menu))
+
+    # callback query handlers
+    dispatcher.add_handler(CallbackQueryHandler(menu_actions, pattern='menu1'))
+
     dispatcher.add_handler(MessageHandler(Filters.text, text))
     dispatcher.add_error_handler(error)
     # run til infinity
