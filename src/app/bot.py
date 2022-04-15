@@ -2,7 +2,7 @@ import json
 import logging
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup
 from telegram.update import Update
 from constants import BOT_API_KEY
 import platform
@@ -63,11 +63,17 @@ def menu(update, context):
     reply_markup = InlineKeyboardMarkup(buttons)
     # send message with keyboard
     update.message.reply_text('Please select an option:', reply_markup=reply_markup)
-
-    
-    
+    # handle the buttons clicked
 
 
+def send_keyboard(update, context):
+    keyboard_layout = [
+       [ '🏁 start', '🛑 stop' , '⏸️ pause',],
+        ['🎬 resume' , '😀 about', '🆘 help'],
+        ['🏆 leaderboard', '🎮 games']
+     ]
+    reply_markup = ReplyKeyboardMarkup(keyboard_layout)
+    update.message.reply_text('Select menu', reply_markup=reply_markup)
 
 # function to handle the /help command
 def help_cmd(update: Update, context: CallbackContext):
@@ -86,6 +92,7 @@ def help_cmd(update: Update, context: CallbackContext):
     for option in commands:
         reply += f'/{option} : {commands[option]}\n\n'
     update.message.reply_text(reply)
+
 
 
 # function to handle errors occurred in dispatcher
@@ -113,6 +120,7 @@ def handler():
     dispatcher.add_handler(CommandHandler('schedule', schedule))
     dispatcher.add_handler(CommandHandler('pause', pause))
     dispatcher.add_handler(CommandHandler('resume', resume))
+    dispatcher.add_handler(CommandHandler('send_keyboard', send_keyboard))
     dispatcher.add_handler(MessageHandler(Filters.text, text))
     dispatcher.add_error_handler(error)
     # run til infinity
