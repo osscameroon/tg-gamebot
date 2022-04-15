@@ -1,16 +1,3 @@
-# ###########################################################
-# MAKEFILE: BOT RUNNER
-# ORG: OSSCameroon
-# AUTHOR: Elroy Kanye
-# DATE: 13 April 2022
-# PURPOSE: To be used for directing commands to the bot application
-#
-# ###########################################################
-#       			START OF PROGRAM
-# ###########################################################
-
-# commands to run the bot
-
 .DEFAULT_GOAL := help
 
 VENV_PATH=venv
@@ -74,6 +61,3 @@ help:
 	@echo "  install-deps: install dependencies"
 	@echo "  help: show this help"
 
-# ###########################################################
-#       			END OF PROGRAM
-# ###########################################################
