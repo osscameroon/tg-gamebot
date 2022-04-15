@@ -12,8 +12,8 @@ $(VENV_PATH)/bin/activate: requirements.txt
 	pip install -r requirements.txt
 	touch $(VENV_PATH)/bin/activate
 
-.PHONY: launch
-launch:
+.PHONY: run
+run:
 	@echo "Launching bot..."
 	$(PYTHON_BIN) $(APP_DIR)/main.py
 
