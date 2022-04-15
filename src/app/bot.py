@@ -50,21 +50,6 @@ def resume(update, context):
     test_poll.resume()
 
 
-def menu(update, context):
-    buttons = [[InlineKeyboardButton(text='Start', callback_data="/start"),
-                InlineKeyboardButton(text='Stop', callback_data="/stop"),
-                InlineKeyboardButton(text='Pause', callback_data="/pause"),
-                InlineKeyboardButton(text='Resume', callback_data="/resume")],
-               [InlineKeyboardButton(text='About', callback_data="/about"),
-                InlineKeyboardButton(text='Help', callback_data="/help"),
-                InlineKeyboardButton(text='Games', callback_data="/games"),
-                InlineKeyboardButton(text='Leaderboard', callback_data="/leaderboard")]]
-    # create a keyboard
-    reply_markup = InlineKeyboardMarkup(buttons)
-    # send message with keyboard
-    update.message.reply_text('Please select an option:', reply_markup=reply_markup)
-    # handle the buttons clicked
-
 
 def send_keyboard(update, context):
     keyboard_layout = [
