@@ -68,12 +68,24 @@ def menu(update, context):
 
 def send_keyboard(update, context):
     keyboard_layout = [
-        ['/start 🏁 ', '/stop 🛑 ', ' /pause ⏸️', ],
-        ['/resume 🎬 ', '/about 😀 ', ' /help 🆘'],
-        ['/leaderboard 🏆 ', ' /games 🎮']
+        [
+            KeyboardButton(text='Start 🏁', callback_data='/start'),
+            KeyboardButton(text='Stop 🛑', callback_data='/stop'),
+            KeyboardButton(text='Pause ⏸️', callback_data='/pause'),
+        ],
+        [
+            KeyboardButton(text='Resume 🎬', callback_data='/resume'),
+            KeyboardButton(text='Games 🎮', callback_data='/games'),
+            KeyboardButton(text='Leaderboard 🏆', callback_data='/leaderboard'),
+        ],
+        [
+            KeyboardButton(text='About 🆘️', callback_data='/about'),
+            KeyboardButton(text='Help ℹ', callback_data='/help'),
+        ]
     ]
-    reply_markup = ReplyKeyboardMarkup(keyboard_layout)
-    update.message.reply_text('Select menu', reply_markup=reply_markup)
+
+    reply_markup = ReplyKeyboardMarkup(keyboard_layout, one_time_keyboard=True)
+    update.message.reply_text('Select Menu', reply_markup=reply_markup)
 
 
 # function to handle the /help command
