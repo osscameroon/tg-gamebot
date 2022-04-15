@@ -9,7 +9,6 @@ from constants import BOT_API_KEY
 # function to greet the user
 from data.quiz import test_poll
 
-
 # function to handle the /start command
 from menus import main_menu_keyboard
 
@@ -102,6 +101,10 @@ def text(update: Update, context: CallbackContext):
 def handler():
     updater = Updater(BOT_API_KEY, use_context=True)
     dispatcher = updater.dispatcher
+
+    # send a message when the bot is run
+    updater.bot.send_message(chat_id=updater.bot.get_me().id, text="I'm online")
+
     # create handlers for all functions above
     dispatcher.add_handler(CommandHandler('start', oss_bot_start))
     dispatcher.add_handler(CommandHandler('help', help_cmd))
