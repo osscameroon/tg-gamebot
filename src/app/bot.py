@@ -14,47 +14,46 @@ from data.quiz import test_poll
 from menus import main_menu_keyboard
 
 
-def start(update: Update, context: CallbackContext):
+def oss_bot_start(update: Update, context: CallbackContext) -> None:
     update.message.reply_text("Hi\nTo start a game, select game type.")
 
 
-def about(update: Update, context: CallbackContext):
+def oss_bot_about(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(f'This is a bot for the {platform.system()} platform')
 
 
 # show available games
-def games(update, context):
+def oss_bot_games(update: Update, context: CallbackContext):
     update.message.reply_text("Games are not implemented yet")
 
 
 # Display leaderboard
-def leaderboard(update, context):
+def oss_bot_leaderboard(update: Update, context: CallbackContext) -> None:
     update.message.reply_text("Leaderboard is not implemented yet")
 
 
 # stop ongoing game
-def stop(update, context):
+def oss_bot_stop(update: Update, context: CallbackContext) -> None:
     update.message.reply_text("Stopping game")
     test_poll.stop()
 
 
 # schedule a game
-def schedule(update, context):
+def oss_bot_schedule(update: Update, context: CallbackContext) -> None:
     update.message.reply_text("Scheduling games")
 
 
 # pause game
-def pause(update, context):
+def oss_bot_pause(update: Update, context: CallbackContext) -> None:
     test_poll.pause()
 
 
 # resume game
-def resume(update, context):
+def oss_bot_resume(update: Update, context: CallbackContext) -> None:
     test_poll.resume()
 
 
-
-def send_keyboard(update, context):
+def oss_bot_menu(update: Update, context: CallbackContext) -> None:
     reply_markup = main_menu_keyboard
     update.message.reply_text('Select Menu', reply_markup=reply_markup)
 
