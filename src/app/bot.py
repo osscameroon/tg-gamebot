@@ -50,12 +50,13 @@ def pause(update, context):
 def resume(update, context):
     test_poll.resume()
 
+
 def menu(update, context):
     buttons = [[InlineKeyboardButton(text='Start', callback_data="/start"),
                 InlineKeyboardButton(text='Stop', callback_data="/stop"),
                 InlineKeyboardButton(text='Pause', callback_data="/pause"),
                 InlineKeyboardButton(text='Resume', callback_data="/resume")],
-                [InlineKeyboardButton(text='About', callback_data="/about"),
+               [InlineKeyboardButton(text='About', callback_data="/about"),
                 InlineKeyboardButton(text='Help', callback_data="/help"),
                 InlineKeyboardButton(text='Games', callback_data="/games"),
                 InlineKeyboardButton(text='Leaderboard', callback_data="/leaderboard")]]
@@ -68,12 +69,13 @@ def menu(update, context):
 
 def send_keyboard(update, context):
     keyboard_layout = [
-       [ '/start 🏁 ', '/stop 🛑 ' , ' /pause ⏸️',],
-        ['/resume 🎬 ' , '/about 😀 ', ' /help 🆘'],
+        ['/start 🏁 ', '/stop 🛑 ', ' /pause ⏸️', ],
+        ['/resume 🎬 ', '/about 😀 ', ' /help 🆘'],
         ['/leaderboard 🏆 ', ' /games 🎮']
-     ]
+    ]
     reply_markup = ReplyKeyboardMarkup(keyboard_layout)
     update.message.reply_text('Select menu', reply_markup=reply_markup)
+
 
 # function to handle the /help command
 def help_cmd(update: Update, context: CallbackContext):
@@ -92,7 +94,6 @@ def help_cmd(update: Update, context: CallbackContext):
     for option in commands:
         reply += f'/{option} : {commands[option]}\n\n'
     update.message.reply_text(reply)
-
 
 
 # function to handle errors occurred in dispatcher
