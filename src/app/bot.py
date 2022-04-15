@@ -84,7 +84,7 @@ def send_keyboard(update, context):
         ]
     ]
 
-    reply_markup = ReplyKeyboardMarkup(keyboard_layout, one_time_keyboard=True)
+    reply_markup = ReplyKeyboardMarkup(keyboard_layout, one_time_keyboard=False)
     update.message.reply_text('Select Menu', reply_markup=reply_markup)
 
 
