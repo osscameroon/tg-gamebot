@@ -55,24 +55,7 @@ def resume(update, context):
 
 
 def send_keyboard(update, context):
-    keyboard_layout = [
-        [
-            KeyboardButton(text='Start 🏁', callback_data='/start'),
-            KeyboardButton(text='Stop 🛑', callback_data='/stop'),
-            KeyboardButton(text='Pause ⏸️', callback_data='/pause'),
-        ],
-        [
-            KeyboardButton(text='Resume 🎬', callback_data='/resume'),
-            KeyboardButton(text='Games 🎮', callback_data='/games'),
-            KeyboardButton(text='Leaderboard 🏆', callback_data='/leaderboard'),
-        ],
-        [
-            KeyboardButton(text='About 🆘️', callback_data='/about'),
-            KeyboardButton(text='Help ℹ', callback_data='/help'),
-        ]
-    ]
-
-    reply_markup = ReplyKeyboardMarkup(keyboard_layout, one_time_keyboard=False)
+    reply_markup = main_menu_keyboard
     update.message.reply_text('Select Menu', reply_markup=reply_markup)
 
 
