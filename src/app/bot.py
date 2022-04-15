@@ -2,7 +2,7 @@ import logging
 import platform
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, KeyboardButton
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext, CallbackQueryHandler
 from telegram.update import Update
 
 from constants import BOT_API_KEY
@@ -11,6 +11,9 @@ from data.quiz import test_poll
 
 
 # function to handle the /start command
+from menus import main_menu_keyboard
+
+
 def start(update: Update, context: CallbackContext):
     update.message.reply_text("Hi\nTo start a game, select game type.")
 
