@@ -68,9 +68,9 @@ def menu(update, context):
 
 def send_keyboard(update, context):
     keyboard_layout = [
-       [ '🏁 /start', '🛑 /stop' , '⏸️ /pause',],
-        ['🎬 /resume' , '😀 /about', '🆘 /help'],
-        ['🏆 /leaderboard', '🎮 /games']
+       [ '/start 🏁 ', '/stop 🛑 ' , ' /pause ⏸️',],
+        ['/resume 🎬 ' , '/about 😀 ', ' /help 🆘'],
+        ['/leaderboard 🏆 ', ' /games 🎮']
      ]
     reply_markup = ReplyKeyboardMarkup(keyboard_layout)
     update.message.reply_text('Select menu', reply_markup=reply_markup)
