@@ -58,6 +58,17 @@ def oss_bot_menu(update: Update, context: CallbackContext) -> None:
     update.message.reply_text('Select Menu', reply_markup=reply_markup)
 
 
+def menu_actions(update: Update, context: CallbackContext) -> None:
+    print("menu_actions")
+    query = update.callback_query
+    query.answer()
+
+    query.edit_message_text(text='Start Menu', reply_markup=InlineKeyboardMarkup(
+        [[InlineKeyboardButton(text='BITCH', callback_data="/start")],
+         [InlineKeyboardButton(text='back', callback_data="main_menu")], ]
+    ))
+
+
 # function to handle the /help command
 def help_cmd(update: Update, context: CallbackContext):
     commands = {
