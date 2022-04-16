@@ -5,7 +5,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMa
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext, CallbackQueryHandler
 from telegram.update import Update
 
-from constants import BOT_API_KEY
+from constants import BOT_API_KEY, BOT_NAME
 # function to greet the user
 from data.quiz import test_poll
 
@@ -19,7 +19,7 @@ def oss_bot_start(update: Update, context: CallbackContext) -> None:
 
 
 def oss_bot_about(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text(f'This is a bot for the {platform.system()} platform')
+    update.message.reply_text(f'BOT NAME: {BOT_NAME} \n BOT VERSION: 1.0 \n BOT PLATFORM: {platform.system()} is a quizbot designed to make the community interactive 😂 have fun while developing your skills')
 
 
 # show available games
@@ -61,20 +61,24 @@ def oss_bot_menu(update: Update, context: CallbackContext) -> None:
 # function to handle the /help command
 def oss_bot_help(update: Update, context: CallbackContext):
     commands = {
-        'about': 'Displays information about the bot',
-        'help': 'displays help comands',
-        'games': 'displays a list of available games',
-        'leaderboard': 'displays the leaderboard',
-        'stop': 'stops game',
-        'start': 'Start a game',
-        'schedule': 'schedules games',
-        'pause': 'pauses ongoing game',
-        'resume': 'resumes paused game',
+        'About': 'Display information about the bot \nPress',
+        'Help': 'display help comands \nPress',
+        'Games': 'display a list of available games \nPress',
+        'Leaderboard': 'display the leaderboard \nPress',
+        'Schedule': 'schedules games \nPress',
+        'Start': 'Start a game \nPress',
+        'Pause': 'pause ongoing game \nPress',
+        'Resume': 'resume paused game \nPress',
+        'Stop': 'stop game \nPress',
     }
-    reply = 'The following commands are available:\n'
-    for option in commands:
-        reply += f'/{option} : {commands[option]}\n\n'
+    reply = 'OSSCAMEROON QUIZBOT HELP!:\n=====================\n'
+    # format the help commands as type buttons
+    for command in commands:
+        reply += f'To {commands[command]} : \t /{command.lower()}\n\n'
     update.message.reply_text(reply)
+
+    
+
 
 
 # function to handle errors occurred in dispatcher
@@ -94,7 +98,7 @@ def menu_actions(update: Update, context: CallbackContext) -> None:
     query.answer()
 
     query.edit_message_text(text='Start Menu', reply_markup=InlineKeyboardMarkup(
-        [[InlineKeyboardButton(text='BITCH', callback_data="/start")],
+        [[InlineKeyboardButton(text='START', callback_data="/start")],
          [InlineKeyboardButton(text='back', callback_data="main_menu")], ]
     ))
 
