@@ -19,7 +19,7 @@ run:
 
 .PHONY: test
 test:
-	@echo "Testing"
+	@echo "Testing..."
 	pytest $(APP_DIR)
 
 .PHONY: lint
@@ -29,7 +29,7 @@ lint:
 
 .PHONY: install-deps
 install-deps:
-	@echo "Installing dependencies"
+	@echo "Installing dependencies..."
 	pip install -r requirements.txt
 
 .PHONY: uninstall-deps
