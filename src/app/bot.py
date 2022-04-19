@@ -16,52 +16,56 @@ from menus import main_menu_keyboard
 
 
 def start_command(update: Update, context: CallbackContext) -> None:
+    """Send a message when the command /start is issued."""
     logging.info('Starting game')
     update.message.reply_text("Hi\nTo start a game, select game type.")
 
 
 def about_command(update: Update, context: CallbackContext) -> None:
+    """Display information about the bot."""
     update.message.reply_text(f'BOT NAME: {BOT_NAME} \n BOT VERSION: 1.0 \n BOT PLATFORM: {platform.system()} is a quizbot designed to make the community interactive 😂 have fun while developing your skills')
 
 
-# show available games
 def list_games_command(update: Update, context: CallbackContext):
+    """Display a list of available games."""
     update.message.reply_text("Games are not implemented yet")
 
 
 # Display leaderboard
 def leaderboard_command(update: Update, context: CallbackContext) -> None:
+    """Shows the leaderboard."""
     update.message.reply_text("Leaderboard is not implemented yet")
 
 
-# stop ongoing game
 def stop_command(update: Update, context: CallbackContext) -> None:
+    """Stop the ongoing game."""
     update.message.reply_text("Stopping game")
     test_poll.stop()
 
 
-# schedule a game
 def schedule_games_command(update: Update, context: CallbackContext) -> None:
+    """Schedules a game."""
     update.message.reply_text("Scheduling games")
 
 
-# pause game
 def pause_command(update: Update, context: CallbackContext) -> None:
+    """Pause the ongoing game."""
     test_poll.pause()
 
 
-# resume game
 def resume_command(update: Update, context: CallbackContext) -> None:
+    """Resume the paused game."""
     test_poll.resume()
 
 
 def menu_command(update: Update, context: CallbackContext) -> None:
+    """Shows the main menu."""
     reply_markup = main_menu_keyboard
     update.message.reply_text('Select Menu', reply_markup=reply_markup)
 
 
-# function to handle the /help command
 def help_command(update: Update, context: CallbackContext):
+    """Send a message when the command /help is issued."""
     commands = {
         'About': 'Display information about the bot \nPress',
         'Help': 'display help comands \nPress',
@@ -81,20 +85,19 @@ def help_command(update: Update, context: CallbackContext):
 
     
 
-
-
-# function to handle errors occurred in dispatcher
 def oss_bot_error(update: Update, context: CallbackContext):
     """Log Errors caused by Updates."""
     logging.warning('Update "%s" caused error "%s"', update, context.error)
 
 
 def oss_bot_text(update: Update, context: CallbackContext):
+    """Handle text messages."""
     text_received = update.message.text
     update.message.reply_text(f'You said: {text_received}')
 
 
 def menu_actions(update: Update, context: CallbackContext) -> None:
+    """Handle callback queries from the main menu."""
     print("menu_actions")
     query = update.callback_query
     query.answer()
@@ -106,6 +109,7 @@ def menu_actions(update: Update, context: CallbackContext) -> None:
 
 
 def handler():
+    """Entry point for the bot."""
     updater = Updater(BOT_API_KEY, use_context=True)
     dispatcher = updater.dispatcher
 
