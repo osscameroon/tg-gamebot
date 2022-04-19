@@ -13,7 +13,7 @@ from data.quiz import test_poll
 from menus import main_menu_keyboard
 
 
-def oss_bot_start(update: Update, context: CallbackContext) -> None:
+def start_command(update: Update, context: CallbackContext) -> None:
     logging.info('Starting game')
     update.message.reply_text("Hi\nTo start a game, select game type.")
 
