@@ -14,7 +14,7 @@ $(VENV_PATH)/bin/activate: requirements.txt
 
 .PHONY: run
 run:
-	@echo "Launching bot..."
+	@echo "Running bot..."
 	$(PYTHON_BIN) $(APP_DIR)/main.py
 
 .PHONY: test
