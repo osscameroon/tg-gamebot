@@ -1,6 +1,8 @@
 import logging
 import platform
 
+from django import dispatch
+
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext, CallbackQueryHandler
 from telegram.update import Update
@@ -18,42 +20,42 @@ def start_command(update: Update, context: CallbackContext) -> None:
     update.message.reply_text("Hi\nTo start a game, select game type.")
 
 
-def oss_bot_about(update: Update, context: CallbackContext) -> None:
+def about_command(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(f'BOT NAME: {BOT_NAME} \n BOT VERSION: 1.0 \n BOT PLATFORM: {platform.system()} is a quizbot designed to make the community interactive 😂 have fun while developing your skills')
 
 
 # show available games
-def oss_bot_games(update: Update, context: CallbackContext):
+def list_games_command(update: Update, context: CallbackContext):
     update.message.reply_text("Games are not implemented yet")
 
 
 # Display leaderboard
-def oss_bot_leaderboard(update: Update, context: CallbackContext) -> None:
+def leaderboard_command(update: Update, context: CallbackContext) -> None:
     update.message.reply_text("Leaderboard is not implemented yet")
 
 
 # stop ongoing game
-def oss_bot_stop(update: Update, context: CallbackContext) -> None:
+def stop_command(update: Update, context: CallbackContext) -> None:
     update.message.reply_text("Stopping game")
     test_poll.stop()
 
 
 # schedule a game
-def oss_bot_schedule(update: Update, context: CallbackContext) -> None:
+def schedule_games_command(update: Update, context: CallbackContext) -> None:
     update.message.reply_text("Scheduling games")
 
 
 # pause game
-def oss_bot_pause(update: Update, context: CallbackContext) -> None:
+def pause_command(update: Update, context: CallbackContext) -> None:
     test_poll.pause()
 
 
 # resume game
-def oss_bot_resume(update: Update, context: CallbackContext) -> None:
+def resume_command(update: Update, context: CallbackContext) -> None:
     test_poll.resume()
 
 
-def oss_bot_menu(update: Update, context: CallbackContext) -> None:
+def menu_command(update: Update, context: CallbackContext) -> None:
     reply_markup = main_menu_keyboard
     update.message.reply_text('Select Menu', reply_markup=reply_markup)
 
@@ -108,16 +110,16 @@ def handler():
     dispatcher = updater.dispatcher
 
     # create handlers for all functions above
-    dispatcher.add_handler(CommandHandler('start', oss_bot_start))
-    dispatcher.add_handler(CommandHandler('help', oss_bot_help))
-    dispatcher.add_handler(CommandHandler('about', oss_bot_about))
-    dispatcher.add_handler(CommandHandler('games', oss_bot_games))
-    dispatcher.add_handler(CommandHandler('leaderboard', oss_bot_leaderboard))
-    dispatcher.add_handler(CommandHandler('stop', oss_bot_stop))
-    dispatcher.add_handler(CommandHandler('schedule', oss_bot_schedule))
-    dispatcher.add_handler(CommandHandler('pause', oss_bot_pause))
-    dispatcher.add_handler(CommandHandler('resume', oss_bot_resume))
-    dispatcher.add_handler(CommandHandler('menu', oss_bot_menu))
+    dispatcher.add_handler(CommandHandler('start', start_command))
+    dispatcher.add_handler(CommandHandler('about', about_command))
+    dispatcher.add_handler(CommandHandler('games', list_games_command))
+    dispatcher.add_handler(CommandHandler('leaderboard', leaderboard_command))
+    dispatcher.add_handler(CommandHandler('schedule', schedule_games_command))
+    dispatcher.add_handler(CommandHandler('stop', stop_command))
+    dispatcher.add_handler(CommandHandler('pause', pause_command))
+    dispatcher.add_handler(CommandHandler('resume', resume_command))
+    dispatcher.add_handler(CommandHandler('help', help_command))
+    dispatcher.add_handler(CommandHandler('menu', menu_command))
 
     # callback query handlers
     dispatcher.add_handler(CallbackQueryHandler(menu_actions, pattern='menu1'))
