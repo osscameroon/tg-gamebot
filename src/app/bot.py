@@ -59,7 +59,7 @@ def oss_bot_menu(update: Update, context: CallbackContext) -> None:
 
 
 # function to handle the /help command
-def oss_bot_help(update: Update, context: CallbackContext):
+def help_command(update: Update, context: CallbackContext):
     commands = {
         'About': 'Display information about the bot \nPress',
         'Help': 'display help comands \nPress',
