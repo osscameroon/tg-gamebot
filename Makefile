@@ -20,25 +20,15 @@ run: install-deps
 .PHONY: test
 test: install-deps
 	@echo "Testing..."
-	pytest $(APP_DIR)
+	$(PYTHON_BIN) -m pytest $(APP_DIR)
 
 .PHONY: lint
 lint:
 	@echo "Linting..."
-	flake8 $(APP_DIR) --count --select=E9,F63,F7,F82 --show-source --statistics --exit-zero --max-complexity=10 --max-line-length=127
+	$(PYTHON_BIN) -m flake8 $(APP_DIR) --count --select=E9,F63,F7,F82 --show-source --statistics --exit-zero --max-complexity=10 --max-line-length=127
 
 .PHONY: install-deps
 install-deps: venv
-
-.PHONY: uninstall-deps
-uninstall-deps:
-	@echo "Uninstalling dependencies..."
-	pip uninstall -r requirements.txt
-
-.PHONY: update
-update:
-	@echo "Updating dependencies..."
-	pip install --upgrade -r requirements.txt
 
 .PHONY: clean
 clean:
