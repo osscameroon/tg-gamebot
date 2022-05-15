@@ -7,40 +7,28 @@ APP_DIR="./src/app"
 .PHONY: venv
 venv: $(VENV_PATH)/bin/activate
 $(VENV_PATH)/bin/activate: requirements.txt
-	test -d $(VENV_PATH) || virtualenv -p python3 $(VENV_PATH); \
+	test -d $(VENV_PATH) || python3 -m venv $(VENV_PATH); \
 	. $(VENV_PATH)/bin/activate; \
 	pip install -r requirements.txt
 	touch $(VENV_PATH)/bin/activate
 
 .PHONY: run
-run:
+run: install-deps
 	@echo "Running bot..."
 	$(PYTHON_BIN) $(APP_DIR)/main.py
 
 .PHONY: test
-test:
+test: install-deps
 	@echo "Testing..."
-	pytest $(APP_DIR)
+	$(PYTHON_BIN) -m pytest $(APP_DIR)
 
 .PHONY: lint
 lint:
 	@echo "Linting..."
-	flake8 $(APP_DIR)
+	$(PYTHON_BIN) -m flake8 $(APP_DIR) --count --select=E9,F63,F7,F82 --show-source --statistics --exit-zero --max-complexity=10 --max-line-length=127
 
 .PHONY: install-deps
-install-deps:
-	@echo "Installing dependencies..."
-	pip install -r requirements.txt
-
-.PHONY: uninstall-deps
-uninstall-deps:
-	@echo "Uninstalling dependencies..."
-	pip uninstall -r requirements.txt
-
-.PHONY: update
-update:
-	@echo "Updating dependencies..."
-	pip install --upgrade -r requirements.txt
+install-deps: venv
 
 .PHONY: clean
 clean:
