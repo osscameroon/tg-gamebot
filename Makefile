@@ -18,14 +18,14 @@ run: install-deps
 	$(PYTHON_BIN) $(APP_DIR)/main.py
 
 .PHONY: test
-test:
+test: install-deps
 	@echo "Testing..."
 	pytest $(APP_DIR)
 
 .PHONY: lint
 lint:
 	@echo "Linting..."
-	flake8 $(APP_DIR)
+	flake8 $(APP_DIR) --count --select=E9,F63,F7,F82 --show-source --statistics --exit-zero --max-complexity=10 --max-line-length=127
 
 .PHONY: install-deps
 install-deps: venv
