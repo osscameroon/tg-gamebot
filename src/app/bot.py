@@ -10,7 +10,7 @@ from constants import BOT_API_KEY, BOT_NAME
 from data.quiz import test_poll
 
 # function to handle the /start command
-from menus import main_menu_keyboard
+from menus import main_menu_keyboard, start_inline_keyboard, game_inline_keyboard, back_inline_keyboard
 
 
 def start_command(update: Update, context: CallbackContext) -> None:
@@ -21,7 +21,8 @@ def start_command(update: Update, context: CallbackContext) -> None:
 
 def about_command(update: Update, context: CallbackContext) -> None:
     """Display information about the bot."""
-    update.message.reply_text(f'BOT NAME: {BOT_NAME} \n BOT VERSION: 1.0 \n BOT PLATFORM: {platform.system()} is a quizbot designed to make the community interactive 😂 have fun while developing your skills')
+    update.message.reply_text(
+        f'BOT NAME: {BOT_NAME} \n BOT VERSION: 1.0 \n BOT PLATFORM: {platform.system()} is a quizbot designed to make the community interactive 😂 have fun while developing your skills')
 
 
 def list_games_command(update: Update, context: CallbackContext):
@@ -81,7 +82,6 @@ def help_command(update: Update, context: CallbackContext):
         reply += f'To {commands[command]} : \t /{command.lower()}\n\n'
     update.message.reply_text(reply)
 
-    
 
 def oss_bot_error(update: Update, context: CallbackContext):
     """Log Errors caused by Updates."""
@@ -106,6 +106,34 @@ def menu_actions(update: Update, context: CallbackContext) -> None:
     ))
 
 
+def sendMarkupAnswer(update: Update, message_text: str, reply_markup: InlineKeyboardMarkup) -> None:
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(text=message_text, reply_markup=reply_markup)
+
+
+def game_callback(update: Update, context: CallbackContext) -> None:
+    sendMarkupAnswer(update, "Game Menu", game_inline_keyboard)
+
+
+def start_callback(update: Update, context: CallbackContext) -> None:
+    sendMarkupAnswer(update, "Start Menu", start_inline_keyboard)
+
+
+def help_callback(update: Update, context: CallbackContext) -> None:
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        text=f'How to play this game:\n\n'
+             f'Open this link: https://github.com/osscameroon/tg-gamebot ',
+        reply_markup=back_inline_keyboard
+    )
+
+
+def menu_test(update: Update, context: CallbackContext) -> None:
+    update.message.reply_text(text="Menu Test", reply_markup=start_inline_keyboard)
+
+
 def handler():
     """Entry point for the bot."""
     updater = Updater(BOT_API_KEY, use_context=True)
@@ -123,8 +151,14 @@ def handler():
     dispatcher.add_handler(CommandHandler('help', help_command))
     dispatcher.add_handler(CommandHandler('menu', menu_command))
 
+    # menu test
+    dispatcher.add_handler(CommandHandler('menu_test', menu_test))
+
     # callback query handlers
-    dispatcher.add_handler(CallbackQueryHandler(menu_actions, pattern='menu1'))
+    dispatcher.add_handler(CallbackQueryHandler(menu_actions, pattern='menu_actions'))
+    dispatcher.add_handler(CallbackQueryHandler(game_callback, pattern='game_callback'))
+    dispatcher.add_handler(CallbackQueryHandler(start_callback, pattern='start_callback'))
+    dispatcher.add_handler(CallbackQueryHandler(help_callback, pattern='help_callback'))
 
     dispatcher.add_handler(MessageHandler(Filters.text, oss_bot_text))
     dispatcher.add_error_handler(oss_bot_error)
