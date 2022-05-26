@@ -28,6 +28,7 @@ main_menu_keyboard = ReplyKeyboardMarkup(
         [
             KeyboardButton(text='About\n🆘️'),
             KeyboardButton(text='Help\nℹ'),
+            KeyboardButton(text='Exit \n❌'),
         ]
     ]
 )

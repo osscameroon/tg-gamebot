@@ -75,6 +75,7 @@ def help_command(update: Update, context: CallbackContext):
         'Pause': 'pause ongoing game \nPress',
         'Resume': 'resume paused game \nPress',
         'Stop': 'stop game \nPress',
+        'Exit': 'Exit The Bot \nPress',
     }
     reply = 'OSSCAMEROON QUIZBOT HELP!:\n=====================\n'
     # format the help commands as type buttons
@@ -128,6 +129,12 @@ def help_callback(update: Update, context: CallbackContext) -> None:
              f'Open this link: https://github.com/osscameroon/tg-gamebot ',
         reply_markup=back_inline_keyboard
     )
+def exit_command(update: Update, context: CallbackContext) -> None:
+    """Iddle bot activity until the user presses the /start command without killing the server"""
+    update.message.reply_text("Exiting Bot")
+    updater = Updater(BOT_API_KEY, use_context=True)
+    return updater.stop()
+
 
 
 def menu_test(update: Update, context: CallbackContext) -> None:
@@ -150,7 +157,7 @@ def handler():
     dispatcher.add_handler(CommandHandler('resume', resume_command))
     dispatcher.add_handler(CommandHandler('help', help_command))
     dispatcher.add_handler(CommandHandler('menu', menu_command))
-
+    dispatcher.add_handler(CommandHandler('exit', exit_command))
     # menu test
     dispatcher.add_handler(CommandHandler('menu_test', menu_test))
 
