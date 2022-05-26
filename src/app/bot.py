@@ -106,24 +106,23 @@ def menu_actions(update: Update, context: CallbackContext) -> None:
     ))
 
 
-def all_callback(update: Update, message_text: str, reply_markup: InlineKeyboardMarkup) -> None:
+def sendMarkupAnswer(update: Update, message_text: str, reply_markup: InlineKeyboardMarkup) -> None:
     query = update.callback_query
     query.answer()
     query.edit_message_text(text=message_text, reply_markup=reply_markup)
 
 
 def game_callback(update: Update, context: CallbackContext) -> None:
-    all_callback(update, "Game Menu", game_inline_keyboard)
+    sendMarkupAnswer(update, "Game Menu", game_inline_keyboard)
 
 
 def start_callback(update: Update, context: CallbackContext) -> None:
-    all_callback(update, "Start Menu", start_inline_keyboard)
+    sendMarkupAnswer(update, "Start Menu", start_inline_keyboard)
 
 
 def help_callback(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
     query.answer()
-
     query.edit_message_text(
         text=f'How to play this game:\n\n'
              f'Open this link: https://github.com/osscameroon/tg-gamebot ',
@@ -153,7 +152,7 @@ def handler():
     dispatcher.add_handler(CommandHandler('menu', menu_command))
 
     # menu test
-    dispatcher.add_handler(CommandHandler('menut', menu_test))
+    dispatcher.add_handler(CommandHandler('menu_test', menu_test))
 
     # callback query handlers
     dispatcher.add_handler(CallbackQueryHandler(menu_actions, pattern='menu_actions'))
